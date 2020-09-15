@@ -3,12 +3,12 @@ $vung1 = "";
 $vung2 = ""; 
 $control = "home";
 
-# Kiểm tra URL đang dùng control gì ?
+# Kiểm tra URL đang dùng control gì:
 if(isset($_GET["control"]) == true){
     $control = $_GET["control"];
 }
 
-# Lựa chọn tổ chức dữ liệu cho website:
+# Lựa chọn tổ chức dữ liệu:
 switch ($control) {
     case 'search':
         include("sessiondata/formsearch.php");
