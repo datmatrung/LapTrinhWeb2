@@ -1,5 +1,3 @@
-<?php
-
 # Khởi tạo các biến:
 $vung1 = ""; 
 $vung2 = ""; 
@@ -26,4 +24,3 @@ switch ($control) {
 
 # Nạp layout:
 include("templates/layout.php");
-?>
