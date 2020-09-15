@@ -23,4 +23,4 @@ switch ($control) {
 }
 
 # Nạp layout:
-include("templates/layout.php");
+include("template/layout.php");
