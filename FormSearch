@@ -1,0 +1,46 @@
+# Lấy từ khóa tìm kiếm:
+$keyword = "";
+if(isset($_GET['querykeyword']) == true){
+    $keyword = $_GET['querykeyword'];
+}
+
+# Tìm kiếm từ khóa trong danh sách:
+$searchdataHTML = "";
+if($keyword !== ""){
+    include("data/dsSinhVien.php");
+    foreach($dsSinhVien as $sinhvien){
+        $name = $sinhvien["name"];
+        $tel = $sinhvien["tel"];
+        $email = $sinhvien["email"];
+        
+        if(stristr($name, $keyword) || stristr($tel, $keyword) || stristr($email, $keyword)){
+            $searchdataHTML .= "
+                <article class='col-12 col-md-12 tm-post'>
+                    <div>Họ tên: $name </div>
+                    <div>Điện thoại: $tel </div>
+                    <div>Email: $email </div>
+                </article>
+            ";
+        }
+    }
+}
+
+# Nếu tìm thấy dữ liệu:
+if($searchdataHTML !== ""){
+    $searchdataHTML = "<article class='col-12 col-md-12 tm-post'>Kết quả tìm kiếm</article>" . $searchdataHTML;
+} 
+else {
+    $searchdataHTML = "Không tìm thấy dữ liệu";
+}
+
+# Tạo HTML data trả về vùng hiển thị:
+$tmp = "
+<form class='form-inline tm-mb-80 tm-search-form' action='index.php?control=search' method='GET'>  
+    <input type='hidden' name='control' value='search'>          
+    <input class='form-control tm-search-input' name='querykeyword' type='text' placeholder='Nhập từ khóa cần tìm' value='$keyword' aria-label='Search'>
+    <button class='tm-search-button' type='submit'>
+        <i class='fas fa-search tm-search-icon' aria-hidden='true'></i>
+    </button>                                
+</form>
+$searchdataHTML
+";
