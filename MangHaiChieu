@@ -1,0 +1,8 @@
+<?php
+    $dsSinhVien = array();
+    $dsSinhVien[] = array("name"=>"Trung", "tel"=>"0888888441", "email"=>"datmatrung@gmail.com");
+    $dsSinhVien[] = array("name"=>"Thuy", "tel"=>"0916916679", "email"=>"vnbay247@gmail.com");
+    $dsSinhVien[] = array("name"=>"Bang", "tel"=>"0968826385", "email"=>"thieulam5782@gmail.com");
+    $dsSinhVien[] = array("name"=>"Dang", "tel"=>"0919995091", "email"=>"tusachvang@gmail.com");
+    $dsSinhVien[] = array("name"=>"Hoa", "tel"=>"0906665782", "email"=>"huongthuy.hth@gmail.com");
+?>
