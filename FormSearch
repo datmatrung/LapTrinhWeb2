@@ -1,4 +1,4 @@
-# Lấy từ khóa tìm kiếm:
+# Lấy từ khóa người dùng cần tìm:
 $keyword = "";
 if(isset($_GET['querykeyword']) == true){
     $keyword = $_GET['querykeyword'];
