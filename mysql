@@ -9,11 +9,12 @@
   $dblogin = "root";
   $dbpass = "";
   $dbname = "photoshow";
+  $port = "3308";
 ?>
 - Nhúng dbinfo.php vào đầu trang web: 
     <?php include("dbinfo.php"); ?>
 - Mở kết nối đến MySQL Server:
-    $cnn = @mysqli_connect($servername, $dblogin, $dbpass, $dbname);
+    $cnn = @mysqli_connect($servername, $dblogin, $dbpass, $dbname, $port);
     # var_dump($cnn); // Kiểm tra biến $cnn đã có dữ liệu chưa
 - Cài đặt dữ liệu trả về là tiếng việt có dấu:
     mysqli_set_charset($cnn, "utf8");
