@@ -42,12 +42,45 @@
     # var_dump($data); // Kiểm tra biến $data đã có dữ liệu chưa
 4. Truyền và nhận dữ liệu theo phương thức GET:
 - Gắn link vào loại hình ảnh:
-    <a href = 'index.php?loai=$id'>$tenloai</a>
-  Nhận loaiId ở đầu trang web:
+    <a href='index.php?loai=$id'>$tenloai</a>
+  Lấy loaiId ở đầu trang web:
   $loaiId = "";
   if (isset($_REQUEST['loai']) == true) {
     $loaiId = $_REQUEST['loai'];
   }
 - Gắn link vào hình ảnh:
-    <a href = 'detail.php?loai=$id'>$tenloai</a>
- 
+    <a href='detail.php?id=$id'>
+      <img src='$url' width=90% />
+    </a>
+  Lấy Id ở đầu trang web:
+  if (isset($_REQUEST['id']) == true) {
+    $haid = $_REQUEST['id'];
+  }
+  5. Xử lý dữ liệu trả về:
+  $row = "";
+  $html = "";
+  - Đối với LoaiHinhAnh:
+      while ($row = mysqli_fetch_assoc($data)) {
+        $id; $tenloai; 
+        $id = $row["id"];
+        $tenloai = $row["tenloai"];
+        $html .= "
+          <a href='index.php?loai=$id'>$tenloai</a>
+        ";
+      }
+      echo $html;
+  - Đối với HinhAnh:
+      while ($row = mysqli_fetch_assoc($data)) {
+        $id; $tenhinh; $url; $thuocloai; $solanxem;
+        $id = $row["id"];
+        $tenhinh = $row["tenhinh"];
+        $url = $row["url"];
+        $thuocloai = $row["thuocloai"];
+        $solanxem = $row["solanxem"];
+        $html2 .= "
+          <a href='detail.php?id=$id'>
+            <img src='$url' width=90% />
+          </a>
+        ";
+      }
+      echo $html; 
