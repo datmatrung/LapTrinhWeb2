@@ -1,0 +1,41 @@
+#0 Thống kê các thành phần trong giao diện
+# {{TITLE}} {{SUBTEXT}} {{CONTENT}}
+
+#1 Khai báo các biến giao diện
+$_title = "";
+$_subtext = "";
+$_ctts = "";
+
+#2 Kiểm tra URL đang dùng control gì:
+$page = "home";
+if(isset($_REQUEST["page"]) == true){
+    $page = $_REQUEST["page"];
+}
+
+#3 Điều hướng nội dung web:
+switch ($page) {
+    case 'home':
+        $_title = "Trang chủ";
+        $_subtext = "Website demo";
+        $_ctts = "Chương trình giới thiệu sản phẩm";
+        break;
+    case 'about':
+        $_title = "Chúng tôi là";
+        $_subtext = "HCMUS";
+        $_ctts = "Chương trình giới thiệu sản phẩm";
+        break;
+    default:
+        break;
+}
+
+#4 Load giao diện template:
+$fullhtml = file_get_contents("template/layout.tpl");
+
+#5 Thay thế các ký hiệu:
+$fullhtml = str_replace("{{TITLE}}", $_title, $fullhtml);
+$fullhtml = str_replace("{{SUBTEXT}}", $_subtext, $fullhtml);
+$fullhtml = str_replace("{{CONTENT}}", $_ctts, $fullhtml);
+
+#6 Load UI to web browser:
+print($fullhtml);
+?>
