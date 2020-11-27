@@ -19,9 +19,7 @@
 - Cài đặt dữ liệu trả về là tiếng việt có dấu:
     mysqli_set_charset($cnn, "utf8");
 - Kiểm tra kết nối:
-    if (!$cnn) {
-      die ("Không thể kết nối được");
-    }
+    if (!$cnn) die ("Không thể kết nối được");
 - Đóng kết nối:
     mysqli_close($cnn);
 3. Viết câu SQL:
