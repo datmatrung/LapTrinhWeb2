@@ -84,3 +84,6 @@
         ";
       }
       echo $html; 
+   - Trường hợp LoaiHinhAnh chưa có HinhAnh:
+      $dem = mysqli_num_rows($data);
+      if ($dem == 0) $html2 = "Chưa có hình ảnh";
