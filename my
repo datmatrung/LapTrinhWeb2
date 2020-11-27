@@ -1,0 +1,53 @@
+1. Tạo bảng và nhập dữ liệu vào bảng:
+- Tạo database: photoshow
+- LoaiHinhAnh: Id(varchar 3, primary), TenLoai(varchar 200)
+- HinhAnh: Id(int, primary, AI), TenHinh(varchar 200), Url(varchar 200), SoLanXem(int), MaLoai(varchar 3)
+2. Tạo kết nối đến MySQL Server:
+- Tạo file dbinfo.php
+<?php
+  $servername = "localhost";
+  $dblogin = "root";
+  $dbpass = "";
+  $dbname = "photoshow";
+?>
+- Nhúng dbinfo.php vào đầu trang web: 
+    <?php include("dbinfo.php"); ?>
+- Mở kết nối đến MySQL Server:
+    $cnn = @mysqli_connect($servername, $dblogin, $dbpass, $dbname);
+    # var_dump($cnn); // Kiểm tra biến $cnn đã có dữ liệu chưa
+- Cài đặt dữ liệu trả về là tiếng việt có dấu:
+    mysqli_set_charset($cnn, "utf8");
+- Kiểm tra kết nối:
+    if (!$cnn) {
+      die ("Không thể kết nối được");
+    }
+- Đóng kết nối:
+    mysqli_close($cnn);
+3. Viết câu SQL:
+- Hiển thị tất cả loại hình ảnh:
+    $sql = "select * from LoaiHinhAnh";
+- Hiển thị hình ảnh theo loại:
+    $sql = "select * from HinhAnh";
+    if ($loaiId != "") {
+      $sql .= " where ThuocLoai = '$loaiId'";
+    }
+- Cách tăng số lần xem hình ảnh:
+    $sql = "
+            update HinhAnh
+            set SoLanXem = SoLanXem + 1
+            where id = $haid;
+    ";
+- Thực thi câu truy vấn:
+    $data = mysqli_query($cnn, $sql);
+    # var_dump($data); // Kiểm tra biến $data đã có dữ liệu chưa
+4. Truyền và nhận dữ liệu theo phương thức GET:
+- Gắn link vào loại hình ảnh:
+    <a href = 'index.php?loai=$id'>$tenloai</a>
+  Nhận loaiId ở đầu trang web:
+  $loaiId = "";
+  if (isset($_REQUEST['loai']) == true) {
+    $loaiId = $_REQUEST['loai'];
+  }
+- Gắn link vào hình ảnh:
+    <a href = 'detail.php?loai=$id'>$tenloai</a>
+ 
