@@ -56,7 +56,7 @@
   if (isset($_REQUEST['id']) == true) {
     $haid = $_REQUEST['id'];
   }
-  5. Xử lý dữ liệu trả về:
+5. Xử lý dữ liệu trả về:
   $row = "";
   $html = "";
   - Đối với LoaiHinhAnh:
